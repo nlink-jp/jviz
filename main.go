@@ -80,21 +80,35 @@ func openBrowser(url string) {
 }
 
 // readStdin decodes a stream of JSON arrays from stdin.
-// Each successfully decoded []map[string]any is sent to the hub.
+func readStdin(hub *Hub) {
+	decodeJSONStream(os.Stdin, hub.send)
+}
+
+// decodeJSONStream reads JSON arrays from r and calls send for each.
 // This handles both single-output (cat data.json | jviz) and
 // streaming (while true; do ...; done | jviz) cases.
-func readStdin(hub *Hub) {
-	dec := json.NewDecoder(os.Stdin)
+func decodeJSONStream(r io.Reader, send func([]map[string]any)) {
+	dec := json.NewDecoder(r)
 	for {
 		var rows []map[string]any
-		if err := dec.Decode(&rows); err == io.EOF {
+		err := dec.Decode(&rows)
+		if err == io.EOF {
 			return
-		} else if err != nil {
-			// Skip non-decodable input and try next token
-			dec.Token() //nolint:errcheck
+		}
+		if err != nil {
+			// Skip to the next newline to avoid looping on the same bad input,
+			// then rebuild the decoder from the remaining buffered bytes + r.
+			buf := dec.Buffered()
+			b := make([]byte, 1)
+			for {
+				if _, rerr := buf.Read(b); rerr != nil || b[0] == '\n' {
+					break
+				}
+			}
+			dec = json.NewDecoder(io.MultiReader(buf, r))
 			continue
 		}
-		hub.send(rows)
+		send(rows)
 	}
 }
 

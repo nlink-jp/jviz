@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-03-28
+
+### Internal
+
+- Added 11 unit tests covering `sseMessage`, `Hub` (snapshot, subscribe/unsubscribe, fan-out), and `decodeJSONStream`.
+- Extracted `decodeJSONStream` helper for testability.
+- Fixed potential infinite loop in `decodeJSONStream` when invalid non-JSON input precedes a valid JSON array: decoder is now rebuilt from buffered bytes after skipping to the next newline.
+
 ## [1.0.0] - 2026-03-28
 
 ### Added
