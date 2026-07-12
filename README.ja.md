@@ -64,7 +64,7 @@ jviz --no-open < data.json
 
 ```sh
 make build        # 現在のプラットフォーム → dist/jviz
-make build-all    # 全5プラットフォーム  → dist/
+make build-all    # 全4プラットフォーム（darwin は arm64 のみ）  → dist/
 make test
 ```
 
