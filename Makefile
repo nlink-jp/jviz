@@ -75,5 +75,5 @@ help:
 # `make brew` generates this formula from the built darwin-arm64 zip into the
 # local nlink-jp/homebrew-tap checkout. The package target is unchanged.
 BREW_KIND := formula
-BREW_DESC := Visualize JSON data in the browser from the command line
+BREW_DESC := Visualize JSON data in the browser from your terminal
 include scripts/release-brew.mk
