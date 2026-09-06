@@ -5,15 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.1] - 2026-09-06
 
 ### Changed
 
-- **Third-party attributions moved from `LICENSE` to `NOTICE.md`.** The
-  appended notice defeated GitHub's licence-template match, so the repository
-  was reported as "Other" rather than MIT. `LICENSE` is now the plain MIT text
-  and the attributions live in `NOTICE.md`, following the convention already
-  used by markdown-viewer. Nothing about the licensing changed.
+- **Third-party attributions moved from `LICENSE` to `NOTICE.md`, and the
+  release archives now carry it.** The attribution appended to `LICENSE`
+  defeated GitHub's licence-template match, so the repository read as "Other"
+  rather than MIT. `LICENSE` is now the plain MIT text and the attributions
+  live in `NOTICE.md`, which the packaging stages alongside `README.md` and
+  `LICENSE` — Chart.js is bundled, so its notice has to travel with every
+  distribution rather than sitting in the repository alone. Nothing about the
+  licensing itself changed.
+
+### Internal
+
+- Homebrew tap generation (`make brew`), with the vendored formula template
+  kept in sync with the org canonical.
+- `make verify-release` refuses to publish a darwin zip that carries no
+  notarization marker, or one rebuilt after its marker.
+- `make test-linux` runs the test suite inside a Linux container, so the
+  GOOS=linux branches are exercised before a linux/* binary ships.
 
 ## [1.2.0] - 2026-07-12
 
