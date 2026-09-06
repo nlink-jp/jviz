@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Third-party attributions moved from `LICENSE` to `NOTICE.md`.** The
+  appended notice defeated GitHub's licence-template match, so the repository
+  was reported as "Other" rather than MIT. `LICENSE` is now the plain MIT text
+  and the attributions live in `NOTICE.md`, following the convention already
+  used by markdown-viewer. Nothing about the licensing changed.
+
 ## [1.2.0] - 2026-07-12
 
 ### Removed

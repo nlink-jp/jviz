@@ -70,6 +70,6 @@ make test
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Third-party attributions: [NOTICE.md](NOTICE.md).
 
 Chart.js is bundled under its own MIT license (© 2023 Chart.js Contributors).

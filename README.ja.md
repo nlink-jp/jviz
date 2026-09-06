@@ -70,6 +70,6 @@ make test
 
 ## ライセンス
 
-MIT — [LICENSE](LICENSE) を参照してください。
+MIT — [LICENSE](LICENSE) を参照してください。サードパーティ帰属は [NOTICE.md](NOTICE.md) にあります。
 
 Chart.js は独自のMITライセンス（© 2023 Chart.js Contributors）の下でバンドルされています。
